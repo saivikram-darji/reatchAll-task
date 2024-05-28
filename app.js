@@ -1,11 +1,8 @@
 const exp = require('express')
 const app = exp()
 const bodyParser = require('body-parser'); 
-// const Controller = require('./controller/courseController')
-// const routes = require('./routes/courseRoutes')
+const dotenv = require('dotenv').config();
 
-// const bannerApp = require('./banner')
-// const coursesApp = require('./courses')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +15,7 @@ const mysql = require('mysql2/promise');
   try {
       // Create a connection to the database
       connection = await mysql.createConnection({
-        host: 'localhost',   
+        host: '13.50.235.169',   
         user: 'root',        
         password: 'root', 
         database: 'client-reatchall',
@@ -38,6 +35,7 @@ const mysql = require('mysql2/promise');
   } 
 })();
 
+console.log(process.env.DB_HOST);  // 'localhost'
 
 //adjusting the image size
 app.use(bodyParser.json({limit:'10mb'}))
