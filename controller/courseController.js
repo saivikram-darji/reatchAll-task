@@ -22,12 +22,9 @@ const createCourse = async (req,res)=>{
 
 const getCourses =async(req,res)=>{
         const connection = req.app.get('connection')
-        const results = req.app.get('results')
         try {
-            const sql = 'SELECT * FROM courses';
-            const results = await connection.query(sql)
-            console.log(results)
-
+            const results = await connection.query('SELECT * FROM courses')
+            
             if(!results){
             res.send({message:"failed to create"})
             }
